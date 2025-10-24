@@ -1,0 +1,275 @@
+/* Variables CSS pour les couleurs */
+:root {
+    --color-primary: #ff9900; /* Orange (Chargé) */
+    --color-secondary: #007bff; /* Bleu (Restant) */
+    --color-primary-hover: #e68a00;
+    --color-background: #f4f4f9;
+    --color-surface: white;
+    --color-text-dark: #333;
+    --color-text-light: white;
+    --color-error: red;
+    --color-border: #ccc;
+    --color-table-border: #ddd;
+}
+
+/* -------------------- Styles de Base & Layout -------------------- */
+body { 
+    font-family: 'Helvetica Neue', Arial, sans-serif; 
+    margin: 0; 
+    padding: 20px;
+    background-color: var(--color-background); 
+}
+
+.container { 
+    max-width: 1000px; 
+    margin: 20px auto; 
+    padding: 30px; 
+    background: var(--color-surface); 
+    border-radius: 12px; 
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1); 
+}
+
+.app-header { 
+    text-align: center; 
+    margin-bottom: 30px; 
+    color: var(--color-text-dark);
+}
+
+/* -------------------- Formulaire -------------------- */
+.search-form { 
+    display: flex; 
+    gap: 10px; 
+    margin-bottom: 30px; 
+    align-items: center;
+}
+
+input[type="text"] { 
+    padding: 12px; 
+    border: 1px solid var(--color-border); 
+    border-radius: 6px; 
+    flex-grow: 1; 
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus {
+    border-color: var(--color-primary);
+    outline: none;
+}
+
+button { 
+    padding: 12px 25px; 
+    background-color: var(--color-primary); 
+    color: var(--color-text-light); 
+    border: none; 
+    border-radius: 6px; 
+    cursor: pointer; 
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+button:hover { 
+    background-color: var(--color-primary-hover); 
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* -------------------- Résultats & Messages -------------------- */
+.results-container { 
+    margin-top: 20px; 
+}
+
+.initial-message {
+    text-align: center;
+    color: #666;
+    padding: 20px;
+    font-style: italic;
+}
+
+.status-message { 
+    text-align: center; 
+    color: var(--color-text-dark); 
+    font-weight: bold;
+    padding: 10px; 
+}
+
+.error-message { 
+    color: var(--color-error); 
+    text-align: center; 
+    font-weight: bold; 
+    padding: 10px;
+    border: 1px solid var(--color-error);
+    border-radius: 4px;
+    background-color: #ffeaea;
+}
+
+.hidden {
+    display: none;
+}
+
+/* -------------------- Tableaux (Styles originaux inutilisés) -------------------- */
+.results-table { 
+    width: 100%; 
+    border-collapse: collapse; 
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.results-table th, 
+.results-table td { 
+    padding: 15px; 
+    text-align: left; 
+    border-bottom: 1px solid var(--color-table-border); 
+}
+
+.results-table th { 
+    background-color: var(--color-text-dark); 
+    color: var(--color-text-light); 
+    cursor: pointer; 
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.results-table a {
+    color: var(--color-text-dark);
+    text-decoration: none;
+}
+
+.results-table tbody tr:hover {
+    background-color: #f9f9f9;
+}
+
+
+/* -------------------- AFFICHAGE POURCENTAGE AU DESSUS -------------------- */
+.progress-percent-display {
+    display: block; 
+    font-size: 2.2em; 
+    font-weight: 900; 
+    color: var(--color-primary); 
+    margin-bottom: 10px; 
+}
+
+
+/* -------------------- Barre de Progression -------------------- */
+.progress-bar-container {
+    width: 80%; 
+    height: 20px;
+    background-color: var(--color-secondary); /* 🎉 FIX CLÉ : Le fond du conteneur est le bleu */
+    border-radius: 10px;
+    margin: 20px auto 10px auto; 
+    overflow: hidden; 
+    border: 1px solid var(--color-border); 
+}
+
+.progress-bar {
+    height: 100%;
+    /* La largeur est gérée par JS */
+    width: 0%; 
+    background-color: transparent; /* La couleur de fond est gérée par JS */
+    transition: width 0.3s ease-out; 
+    
+    text-align: center;
+    line-height: 20px; 
+    color: transparent; 
+    
+    /* Les fonds sont gérés par JS */
+    background-repeat: repeat, no-repeat; 
+
+    /* Animation de rayures */
+    animation: move-stripes 2s linear infinite; 
+}
+
+/* -------------------- Animation CSS (Mouvement Vers la Gauche) -------------------- */
+@keyframes move-stripes {
+    from {
+        /* On ne déplace que le premier background (les rayures) */
+        background-position: 0 0, 0 0; 
+    }
+    to {
+        /* Déplacement de 40px vers la gauche pour le premier calque (rayures) */
+        /* ET AUCUN DÉPLACEMENT pour le second calque (couleurs Orange/Bleu) */
+        background-position: -40px 0, 0 0; 
+    }
+}
+
+/* -------------------- Styles des Résultats (pour le rendu de script.js) -------------------- */
+.product-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.product-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: var(--color-surface);
+    transition: box-shadow 0.2s;
+}
+
+.product-item:hover {
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.product-info {
+    flex-grow: 1;
+    margin-right: 20px;
+    text-align: center; /* Centrer le prix au kg et le titre */
+}
+
+.product-title {
+    max-width: 90%; 
+    margin: 0 auto 5px auto;
+}
+
+.product-title a {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: var(--color-text-dark);
+    text-decoration: none;
+}
+
+.product-title a:hover {
+    color: var(--color-primary);
+    text-decoration: underline;
+}
+
+.unit-price-display {
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 5px;
+}
+
+.price-value {
+    font-size: 1.2em;
+    font-weight: 900;
+    color: green; /* Prix le plus important */
+}
+
+.product-details {
+    text-align: right;
+}
+
+.total-price {
+    font-size: 0.9em;
+    color: var(--color-text-dark);
+    font-weight: bold;
+}
+
+.raw-price {
+    font-size: 0.8em;
+    color: #999;
+}
+
+.no-results {
+    text-align: center;
+    color: #cc0000;
+    font-style: italic;
+    padding: 20px;
+}

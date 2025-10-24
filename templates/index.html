@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon – Prix au kilo (kg) | Recherche Produit</title>
+    
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico">
+    
+    <link rel="apple-touch-icon" href="/static/apple-touch-icon.png"> 
+    <link rel="apple-touch-icon" sizes="76x76" href="/static/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/static/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/static/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/apple-touch-icon-180x180.png">
+    
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header class="app-header">
+            <h1>Amazon — Prix au kilo (kg)</h1>
+            <p>Entrez un terme de recherche pour comparer les prix au kilog des produits Amazon</p>
+        </header>
+
+        <main>
+            <form id="search-form" class="search-form">
+                <input 
+                    type="text" 
+                    id="query" 
+                    placeholder="Ex: Barre protéinée, Chocolat" 
+                    aria-label="Terme de recherche"
+                    required>
+                <button type="submit">Rechercher</button>
+            </form>
+
+            <div id="status" class="status-message hidden">
+                <span id="progress-percent" class="progress-percent-display">0%</span> 
+                
+                <div id="progress-bar-container" class="progress-bar-container">
+                    <div id="progress-bar" class="progress-bar"></div>
+                </div>
+                <p id="loading-text">Chargement en cours...</p>
+            </div>
+            
+            <section id="results-container" class="results-container">
+                <p class="initial-message">Utilisez la barre de recherche pour trouver les meilleurs prix au kilo.</p>
+            </section>
+        </main>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
